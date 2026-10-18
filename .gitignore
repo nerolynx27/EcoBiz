@@ -1,0 +1,45 @@
+# Dependencies, caches, generated application output, and local configuration.
+node_modules/
+.next/
+.npm-cache/
+*.tsbuildinfo
+*.log
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+/ecobiz-app/next-env.d.ts
+/ecobiz-app/screenshots/
+
+# Preserve local history and working materials without publishing them.
+/archive/
+/workfiles/
+/media/
+/ORGANIZATION_PLAN.md
+
+# Publish only the selected original brand asset.
+/assets/*
+!/assets/brand/
+/assets/brand/*
+!/assets/brand/Logo.jpeg
+
+# Publish only the three selected planning documents.
+/documents/*
+!/documents/business/
+!/documents/product/
+!/documents/schedule/
+/documents/business/*
+!/documents/business/ECOBIZ_BUSINESS_MODEL_CANVAS.md
+/documents/product/*
+!/documents/product/ECOBIZ_APP_PLAN.md
+/documents/schedule/*
+!/documents/schedule/ECOBIZ_PROJECT_GANTT_CHART.xlsx
+
+# Publish only the selected finished pitch deck.
+/deliverables/*
+!/deliverables/pitch-deck/
+/deliverables/pitch-deck/*
+!/deliverables/pitch-deck/EcoBiz Pitch deck.pdf

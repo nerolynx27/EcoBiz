@@ -1,0 +1,89 @@
+.stage { position:relative; isolation:isolate; display:flow-root; }
+.content { position:relative; z-index:1; }
+
+/* Clip only the decorative viewport, leaving content and keyboard focus unclipped. */
+.backdrop {
+  --panel-half:360px;
+  position:absolute; inset:0 -32px; overflow:clip;
+  pointer-events:none; user-select:none; z-index:0;
+}
+.corner,.side,.closing { position:absolute; display:block; background-repeat:no-repeat; background-size:contain; }
+.corner {
+  width:132px; height:119px; top:2px;
+  left:calc(50% + min(50% - 32px, var(--panel-half)) - 47px);
+  background-image:url('/art/leaves/sparse-leaf-sprigs.svg'); transform:rotate(12deg);
+}
+.side {
+  width:200px; height:340px; top:clamp(200px,28%,480px);
+  left:calc(50% - min(50% - 32px, var(--panel-half)) - 116px);
+  background-image:url('/art/leaves/fine-contour-arc.svg'); transform:rotate(-18deg);
+}
+.closing {
+  width:290px; height:134px; bottom:2px;
+  left:calc(50% - min(50% - 32px, var(--panel-half)) - 119px);
+  background-image:url('/art/leaves/closing-flourish.svg');
+}
+.quiet { --panel-half:360px; }
+.home .corner { display:none; }
+.home .side { top:540px; left:-138px; background-image:url('/art/leaves/organic-side-sweep.svg'); }
+.home .closing { width:80px; height:72px; bottom:96px; left:auto; right:-4px; background-image:url('/art/leaves/sparse-leaf-sprigs.svg'); }
+.meal { --panel-half:390px; }
+.meal .corner { top:26px; transform:rotate(-22deg); }
+.meal .side { background-image:url('/art/leaves/organic-side-sweep.svg'); height:440px; transform:none; }
+.history .corner { transform:rotate(-22deg); }
+.history .closing { transform:scaleX(-1); left:auto; right:calc(50% - min(50% - 32px, var(--panel-half)) - 115px); }
+.pass .corner { top:66px; left:calc(50% - min(50% - 32px, var(--panel-half)) - 46px); transform:rotate(-36deg); width:100px; height:90px; }
+.pass .side { left:auto; right:calc(50% - min(50% - 32px, var(--panel-half)) - 110px); transform:scaleX(-1); }
+.pass .closing { width:180px; height:83px; }
+.operations,.newOffer { --panel-half:450px; }
+.operations .side,.newOffer .side,.editOffer .side { height:530px; background-image:url('/art/leaves/organic-side-sweep.svg'); transform:none; }
+.operations .corner,.newOffer .corner { width:245px; height:233px; top:3px; background-image:url('/art/leaves/flowing-corner-ribbon.svg'); transform:none; }
+.newOffer .corner { top:46px; }
+.editOffer .side { left:auto; right:calc(50% - min(50% - 32px, var(--panel-half)) - 112px); transform:scaleX(-1); }
+.help .closing { left:auto; right:calc(50% - min(50% - 32px, var(--panel-half)) - 96px); transform:scaleX(-1); }
+.privacy .corner,.terms .corner { width:98px; height:88px; }
+.terms .corner { left:calc(50% - min(50% - 32px, var(--panel-half)) - 36px); transform:scaleX(-1); }
+.terms .side { left:auto; right:calc(50% - min(50% - 32px, var(--panel-half)) - 120px); transform:scaleX(-1); }
+
+.cardGroup { position:relative; isolation:isolate; }
+.cardGroup > :not(.cardRibbon) { position:relative; z-index:1; }
+.cardRibbon { position:absolute; inset:0 -32px; z-index:0; overflow:clip; pointer-events:none; }
+.cardRibbon::before {
+  content:''; position:absolute; top:28px; left:-36px;
+  width:calc(100% + 72px); aspect-ratio:660 / 230;
+  background:url('/art/leaves/behind-card-ribbon.svg') center / 100% auto no-repeat;
+}
+
+/* A zero-height detail in an existing section gap, confined to panel padding. */
+.sectionAccent { position:relative; height:0; pointer-events:none; user-select:none; }
+.sectionAccent::before {
+  content:''; position:absolute; top:-4px; right:-52px; width:48px; height:76px;
+  background:url('/art/leaves/sparse-leaf-sprigs.svg') center / contain no-repeat;
+}
+
+@media(max-width:700px) {
+  .backdrop { inset-inline:-24px; }
+  .corner { width:94px; height:85px; left:calc(100% - 70px); top:8px; }
+  .side { left:-84px; width:142px; height:330px; }
+  .closing { left:-76px; width:185px; height:86px; bottom:9px; }
+  .home .side { left:-93px; top:480px; }
+  .home .closing { width:62px; height:56px; right:-2px; bottom:92px; }
+  .meal .corner { top:32px; }
+  .meal .side { left:-93px; height:330px; }
+  .operations .corner,.newOffer .corner { left:calc(100% - 85px); width:180px; height:171px; }
+  .newOffer .corner { top:48px; }
+  .operations .side,.newOffer .side { left:-93px; }
+  .editOffer .side,.pass .side,.terms .side { right:-90px; left:auto; }
+  .history .closing,.help .closing { right:-78px; left:auto; }
+  .pass .corner,.terms .corner { left:-18px; width:76px; height:69px; }
+  .cardRibbon { inset-inline:-24px; }
+  .cardRibbon::before { top:20px; left:-20px; width:calc(100% + 40px); }
+  .sectionAccent::before { right:-36px; width:32px; height:54px; }
+}
+@media(max-width:359px) {
+  .backdrop,.cardRibbon { inset-inline:-18px; }
+  .corner { width:76px; height:69px; left:calc(100% - 58px); }
+  .operations .corner,.newOffer .corner { left:calc(100% - 63px); width:145px; height:138px; }
+  .home .closing { right:-9px; }
+  .cardRibbon::before { top:24px; }
+}
