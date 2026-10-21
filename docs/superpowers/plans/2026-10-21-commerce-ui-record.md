@@ -36,3 +36,9 @@ Main checkout retained unchanged; sandbox branch retained for further visual ite
 - Adjusted heading sizes and small-text sizes for the new font proportions. Header and layout checks cover Meals, Account, fertilizer, delivery, runner, orders and the board at 320/390/768/1440px.
 - Typecheck, lint, unit suite and production build passed. Commerce browser suite and retained customer/staff journeys passed with the new typography. Final header spacing checked in the follow-up production verification.
 - Final production verification: PASS for font loading and shared-header layout across all seven routes at all four widths; PASS for commerce interactions and complete existing customer/staff browser journeys.
+
+## Font revert
+
+Restored the original Inter/Manrope app typography and Barlow Condensed commerce headings at the user's request. Retained the shared Meals/Account header, logo sizing/spacing, all other non-typographic layout refinements, and all demo behavior. Removed only the reverted Sigmar/Maname font assets and their licenses.
+
+Verification: production build PASS; original-font/shared-header browser review PASS for seven routes at 320/390/768/1440; commerce interaction suite PASS. Header implementation files unchanged by this revert.

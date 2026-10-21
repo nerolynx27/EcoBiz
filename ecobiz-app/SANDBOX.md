@@ -29,4 +29,4 @@ npm run test:browser
 
 This managed sandbox reuses the original installation through a node_modules junction. Webpack keeps module resolution within this arrangement. A standalone checkout can use `npm ci` instead.
 
-Approved visual reference: public/art/commerce/approved-concept.png. Typography uses Sigmar for titles and Maname for supporting text (OFL licenses bundled). Leaf SVG and all HTML/CSS controls remain editable. Screenshots are local verification artifacts under screenshots/.
+Approved visual reference: public/art/commerce/approved-concept.png. Typography uses the original Inter/Manrope app fonts and Barlow Condensed commerce headings (licenses bundled). Leaf SVG and all HTML/CSS controls remain editable. Screenshots are local verification artifacts under screenshots/.
