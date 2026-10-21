@@ -16,7 +16,7 @@ export function CommerceNavigation({ active, wide = false }: { active: string; w
 }
 export function CommerceFrame({ children, active, board = false }: { children: ReactNode; active: string; board?: boolean }) {
   const { notice } = useCommerce();
-  return <div className={`${s.screen} ${board ? s.boardScreen : ''}`}><div className={s.leaves} aria-hidden="true"/><div className={s.sharedHeader}><Header compact/></div><div className={s.content}>{children}</div>{notice && <p className={s.notice} role="status">{notice}</p>}<div className={s.sample}>Sample demo</div><CommerceNavigation active={active}/></div>;
+  return <div className={`${s.screen} ${board ? s.boardScreen : ''}`}>{active !== '/fertilizer' && <div className={s.leaves} aria-hidden="true"/>}<div className={s.sharedHeader}><Header compact/></div><div className={s.content}>{children}</div>{notice && <p className={s.notice} role="status">{notice}</p>}<div className={s.sample}>Sample demo</div><CommerceNavigation active={active}/></div>;
 }
 export function AppShell({ children }: { children: ReactNode }) {
   const path = usePathname();
