@@ -8,7 +8,16 @@ await mkdir('screenshots', { recursive: true });
 try {
   await page.goto(base + '/fertilizer');
   await expect(page.getByRole('heading', { name: 'Grow something good.' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Our story', exact: true })).toBeVisible();
+  expect(await page.getByRole('heading', { name: 'Our story', exact: true }).evaluate(el => !!(el.compareDocumentPosition(document.querySelector('#fertilizer-order-title')) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
+  await expect(page.getByRole('button', { name: /Garden Pack/ })).toHaveCount(0);
+  await expect(page.getByTestId('fertilizer-pack-photo')).toHaveAttribute('src', '/art/fertilizer/1kg.webp');
+  await page.getByRole('button', { name: '5 kg', exact: true }).click();
+  await expect(page.getByTestId('fertilizer-pack-photo')).toHaveAttribute('src', '/art/fertilizer/5kg.webp');
+  await expect(page.getByTestId('product-price')).toHaveText('RM 30.00');
   await page.getByRole('button', { name: '3 kg', exact: true }).click();
+  await expect(page.getByTestId('fertilizer-pack-photo')).toHaveAttribute('src', '/art/fertilizer/3kg.webp');
+  expect(await page.getByTestId('fertilizer-pack-photo').evaluate(img => img.complete && img.naturalWidth > 0)).toBe(true);
   await expect(page.getByTestId('product-price')).toHaveText('RM 20.00');
   await page.getByRole('button', { name: 'Delivery', exact: true }).click();
   await page.getByRole('button', { name: 'Add to order', exact: true }).click();

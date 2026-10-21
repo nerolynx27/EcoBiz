@@ -46,3 +46,5 @@
 @container commerce (max-width:323px){.content{--type-hero:36px;--type-section:23px;--type-card:25px;--type-price:28px;--type-action:14px}.screen .garden strong{font-size:13px}.screen .garden b{font-size:21px}}
 @media(max-width:359px){.nav a{font-size:11px}}
 .screen .price,.screen .orderList .price,.screen .earnings strong,.screen .handover strong{line-height:1.55}
+/* Each review phone scrolls independently when a page grows beyond one screen. */
+.boardScreen{height:900px;min-height:0;flex:none}.boardScreen .content{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--line) transparent;padding:0 4px;margin:0 -4px;scroll-padding-block:16px}.boardScreen .nav{margin-top:0}
