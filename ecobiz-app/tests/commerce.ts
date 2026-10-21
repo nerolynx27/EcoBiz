@@ -1,0 +1,28 @@
+import assert from 'node:assert/strict';
+let api;
+try { api = await import('../src/lib/commerce.ts'); } catch { assert.fail('Commerce demo state has not been implemented'); }
+const { initialCommerceState, commerceReducer: reduce, restoreCommerce, packPrice } = api;
+assert.equal(packPrice(1), 800); assert.equal(packPrice(3), 2000); assert.equal(packPrice(5), 3000);
+let state = reduce(initialCommerceState, { type: 'order', id: 'sample-1', weight: 3, fulfillment: 'delivery' });
+assert.deepEqual(state.orders[0], { id: 'sample-1', weight: 3, priceSen: 2000, fulfillment: 'delivery' });
+state = reduce(state, { type: 'order', id: 'sample-1', weight: 3, fulfillment: 'delivery' });
+assert.equal(state.orders.length, 1, 'Duplicate confirmation must create one order');
+assert.equal(reduce(state, { type: 'order', id: 'bad', weight: 2 as never, fulfillment: 'delivery' }).orders.length, 1);
+state = reduce(state, { type: 'online', value: false });
+assert.equal(reduce(state, { type: 'accept', id: 'meal' }).activeJob, null);
+state = reduce(state, { type: 'online', value: true });
+state = reduce(state, { type: 'accept', id: 'meal' });
+assert.equal(state.activeJob?.id, 'meal');
+assert.equal(reduce(state, { type: 'accept', id: 'fertilizer' }).activeJob?.id, 'meal');
+assert.equal(reduce(state, { type: 'complete', code: '4821' }).earningsSen, 1200, 'Cannot complete before pickup');
+state = reduce(state, { type: 'pickup' });
+assert.equal(reduce(state, { type: 'complete', code: '0000' }).earningsSen, 1200);
+state = reduce(state, { type: 'complete', code: '4821' });
+assert.equal(state.earningsSen, 1500); assert.equal(state.completedCount, 4); assert.equal(state.activeJob, null);
+assert.equal(reduce(state, { type: 'complete', code: '4821' }).earningsSen, 1500);
+assert.equal(reduce(state, { type: 'accept', id: 'meal' }).activeJob, null);
+assert.deepEqual(restoreCommerce('{'), initialCommerceState);
+assert.deepEqual(restoreCommerce('{"version":1,"orders":[]}'), initialCommerceState);
+assert.deepEqual(restoreCommerce(JSON.stringify({ ...state, earningsSen: -1 })), initialCommerceState);
+assert.deepEqual(restoreCommerce(JSON.stringify(state)), state);
+console.log('PASS: pack pricing, order snapshots, duplicate actions, offline/concurrent jobs, pickup/code guards, once-only earnings, storage recovery');

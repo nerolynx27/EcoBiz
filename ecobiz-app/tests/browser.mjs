@@ -54,7 +54,8 @@ try {
   await expect(page.getByText('RM7.50', { exact: true })).toBeVisible();
   await page.reload(); await expect(page.getByRole('heading', { name: 'Reserved — pay at pickup' })).toBeVisible();
   for (const width of [320, 390, 1440]) { await page.setViewportSize({ width, height: 900 }); await noOverflow(); await capture(`pass-${width}`); }
-  await page.getByRole('navigation').getByRole('link', { name: 'My reservations', exact: true }).click();
+  await page.getByRole('navigation').getByRole('link', { name: 'My Orders', exact: true }).click();
+  await page.getByRole('link', { name: 'Meal reservations', exact: true }).click();
   await page.getByRole('link', { name: /Open pickup pass/ }).click(); await expect(page).toHaveURL(passURL);
   await page.goto(`${base}/reserve/fish-rice`); await expect(page.getByRole('button', { name: 'Confirm sample reservation' })).toBeDisabled();
   await expect(page.getByText(/You already have an active reservation/)).toBeVisible();
@@ -111,5 +112,3 @@ try {
 
 
 await import('./staff-browser.mjs');
-
-
