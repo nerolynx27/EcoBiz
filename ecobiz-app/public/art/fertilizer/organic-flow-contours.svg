@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 1300" width="1040" height="1300">
+  <title>EcoBiz organic contour continuation</title>
+  <desc>The original Meals fine contour lines, without solid leaves, for readable story sections.</desc>
+  <defs>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2=".6">
+      <stop stop-color="#08713b" />
+      <stop offset=".5" stop-color="#12a64b" />
+      <stop offset="1" stop-color="#078640" />
+    </linearGradient>
+    <linearGradient id="deep" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#0c8b43" />
+      <stop offset="1" stop-color="#075d34" />
+    </linearGradient>
+    <linearGradient id="lime" x1="0" y1="0" x2="1" y2=".5">
+      <stop stop-color="#92bd16" />
+      <stop offset=".5" stop-color="#b8d833" />
+      <stop offset="1" stop-color="#9cc51c" />
+    </linearGradient>
+    <linearGradient id="ivory" x1="0" y1="0" x2="1" y2=".6">
+      <stop stop-color="#f8f8ee" />
+      <stop offset="1" stop-color="#e9eddc" />
+    </linearGradient>
+    <radialGradient id="plate">
+      <stop stop-color="#e9e5a8" />
+      <stop offset=".8" stop-color="#d7cc7c" />
+      <stop offset="1" stop-color="#b4a657" />
+    </radialGradient>
+  </defs>
+  <g id="contour-network" fill="none" stroke="#138d43" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity=".76">
+    <path d="M214 0C304 66 357 46 439 13S591-25 671 2" fill="none" />
+    <path d="M275 0C327 20 328 75 281 88C241 105 219 77 210 59" fill="none" />
+    <path d="M352 0C333 34 326 44 306 57C319 28 329 17 352 0" fill="none" />
+    <path d="M445 0C421 24 407 45 395 65C417 42 440 31 465 34C447 48 428 67 412 79" fill="none" />
+    <path d="M522 0C520 43 568 46 624 29S743-8 813 5" fill="none" />
+    <path d="M622 0C577 32 533 79 479 93C423 106 368 88 317 112" fill="none" />
+    <path d="M1037 40C949 11 906 38 837 27S718 8 666 49S563 114 477 111" fill="none" />
+    <path d="M1040 88C955 39 901 73 837 59S732 47 681 84S559 139 506 145" fill="none" />
+    <path d="M1040 151C967 117 952 197 893 183C848 170 850 128 789 121S694 153 666 177" fill="none" />
+    <path d="M1040 197C1001 178 975 224 940 213C910 205 891 165 848 165" fill="none" />
+    <path d="M1040 247C989 246 985 282 956 272C928 263 926 220 879 212" fill="none" />
+    <path d="M292 113C286 222 337 345 422 341C473 340 512 302 566 303" fill="none" />
+    <path d="M281 137C287 255 344 369 427 367C508 367 522 307 602 322" fill="none" />
+    <path d="M323 191C372 303 396 351 471 341C536 334 557 291 636 291" fill="none" />
+    <path d="M1035 338C980 315 961 300 926 303C888 307 892 338 867 355" fill="none" />
+    <path d="M1040 403C1011 380 1001 341 961 327C923 314 910 350 904 379" fill="none" />
+    <path d="M1040 478C1004 452 999 409 971 388" fill="none" />
+    <path d="M652 337C585 364 579 416 589 476C592 539 639 599 695 613C774 633 849 594 878 543" fill="none" />
+    <path d="M634 343C558 378 547 444 566 516C586 599 653 634 712 636C792 646 875 597 897 530" fill="none" />
+    <path d="M616 350C527 382 510 465 538 547C561 625 633 665 720 663C807 666 887 615 913 557" fill="none" />
+    <path d="M594 353C500 392 483 498 519 581C555 665 641 692 725 687" fill="none" />
+    <path d="M582 355C544 401 512 420 495 452C533 430 563 400 582 355" fill="none" />
+    <path d="M474 445C429 489 419 576 444 626C479 695 588 741 699 723" fill="none" />
+    <path d="M458 472C420 526 419 617 461 668C505 724 622 755 688 744" fill="none" />
+    <path d="M1009 486C1033 568 990 673 900 722C831 760 791 769 761 789" fill="none" />
+    <path d="M1028 529C1043 617 982 707 901 747C831 782 798 805 789 840" fill="none" />
+    <path d="M1036 594C1037 687 982 751 903 794C826 836 796 894 799 947" fill="none" />
+    <path d="M609 808C474 858 385 903 322 1019" fill="none" />
+    <path d="M591 830C485 886 420 924 385 1019" fill="none" />
+    <path d="M757 825C686 924 671 1019 731 1096C788 1166 932 1137 976 1230L1008 1290" fill="none" />
+    <path d="M786 803C717 909 696 1014 754 1080C810 1141 942 1129 994 1225L1030 1289" fill="none" />
+    <path d="M811 807C748 900 733 1002 780 1057C845 1127 982 1144 1012 1236L1038 1297" fill="none" />
+    <path d="M1038 692C1043 816 985 906 946 966C920 1004 916 1032 943 1060" fill="none" />
+    <path d="M1028 752C1013 849 958 901 931 954C908 997 930 1041 960 1057" fill="none" />
+  </g>
+</svg>

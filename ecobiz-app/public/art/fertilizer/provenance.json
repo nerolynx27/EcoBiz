@@ -1,0 +1,12 @@
+{
+  "design": "Garden Rhythm (selected green concept number 4)",
+  "modelRequested": "nano_banana_pro",
+  "modelReported": "nano_banana_2",
+  "generationResolution": "2k",
+  "assets": [
+    { "weightKg": 1, "jobId": "62489ca3-b08a-4214-bf24-dd95d67ba217", "file": "1kg.webp" },
+    { "weightKg": 3, "jobId": "95ca7eed-071f-4e91-9775-9aed39cba54b", "file": "3kg.webp" },
+    { "weightKg": 5, "jobId": "7e38e2e6-57c2-4a96-a99c-434260f8db71", "file": "5kg.webp" }
+  ],
+  "preparation": "Optimized 1600px WebP copies; original generated photographs retained locally in screenshots/fertilizer-originals."
+}

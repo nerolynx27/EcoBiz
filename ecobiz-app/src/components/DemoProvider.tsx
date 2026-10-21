@@ -76,12 +76,12 @@ function useDemoState() {
 }
 const DemoContext = createContext<ReturnType<typeof useDemoState> | null>(null);
 export function useDemo() { const value = useContext(DemoContext); if (!value) throw new Error('DemoProvider is required'); return value; }
-export function DemoProvider({ children }: { children: ReactNode }) {
+export function DemoProvider({ children, hideControls = false }: { children: ReactNode; hideControls?: boolean }) {
   const demo = useDemoState();
   const router = useRouter();
   return <DemoContext.Provider value={demo}>
     {demo.ready ? children : <main className={s.panel} aria-busy="true"><p role="status">Restoring sample session and reservations…</p></main>}
-    {demo.ready && <aside className={s.controls} aria-label="Prototype review controls">
+    {demo.ready && !hideControls && <aside className={s.controls} aria-label="Prototype review controls">
       {!demo.persistent && <p role="alert">Browser storage is unavailable. This booking is in memory only; refresh recovery is unavailable.</p>}
       <p role="status">{demo.notice}</p>
       <details><summary>Demo controls <span>· {demo.state.staff ? 'Staff demo' : demo.signedIn ? 'Sample session' : 'Guest'} · {demo.scenario}</span></summary>
@@ -95,5 +95,3 @@ export function DemoProvider({ children }: { children: ReactNode }) {
     </aside>}
   </DemoContext.Provider>;
 }
-
-

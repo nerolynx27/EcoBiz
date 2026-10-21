@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { type Offer } from '@/lib/demo';
 import { useDemo } from './DemoProvider';
 import s from './EcoBiz.module.css';
+import { CommerceNavigation } from './commerce/CommerceShell';
 
 export function Icon({ name }: { name: 'meals' | 'calendar' | 'account' | 'clock' | 'shop' | 'arrow' | 'bag' | 'hand' | 'help' }) {
   const paths = {
@@ -20,9 +21,9 @@ export function Icon({ name }: { name: 'meals' | 'calendar' | 'account' | 'clock
   };
   return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name]}</svg>;
 }
-export function Header() {
+export function Header({ compact = false }: { compact?: boolean }) {
   const { signedIn, profile, state } = useDemo();
-  return <header className={s.header}>
+  return <header className={`${s.header} ${compact ? s.compactHeader : ""}`}>
     <Link className={s.brand} href="/" aria-label="EcoBiz home"><img src="/logo.jpeg" width="88" height="64" alt="EcoBiz" /></Link>
     <span className={s.campus}><span className={`${s.brand} ${s.unitenBrand}`}><img src="/logo_uniten.png" width="428" height="165" alt="UNITEN — Universiti Tenaga Nasional" /></span></span>
     <Link className={s.avatar} href={state.staff ? "/ops" : "/account"} aria-label={state.staff ? "Staff demo operations" : "Account"}>{state.staff ? 'S' : signedIn ? profile.displayName.charAt(0) : <Icon name="account" />}</Link>
@@ -31,6 +32,7 @@ export function Header() {
 export function Navigation() {
   const { state } = useDemo();
   const path = usePathname();
+  if (!state.staff) return <CommerceNavigation wide active={path === '/' || path.startsWith('/meals') || path.startsWith('/reserve/') ? '/' : path.startsWith('/reservations') ? '/orders' : '/account'}/>;
   const customerLinks = [{ href: '/', label: 'Meals', icon: 'meals' }, { href: '/reservations', label: 'My reservations', icon: 'calendar' }, { href: '/account', label: 'Account', icon: 'account' }] as const;
   const links = state.staff ? [{ href: '/ops', label: 'Operations', icon: 'hand' as const }, { href: '/ops/offers/new', label: 'Offers', icon: 'bag' as const }, { href: '/help', label: 'Help', icon: 'help' as const }] : customerLinks;
   return <nav className={s.nav} aria-label={state.staff ? "Staff navigation" : "Main navigation"}><div>{links.map(link => {
@@ -50,6 +52,3 @@ export function HeroArt() {
   return <img className={s.heroArt} src="/art/ecobiz-hero-reference.svg" width="1040" height="1300" alt="" aria-hidden="true" />;
 }
 export function NotFoundContent() { return <section className={s.panel}><p className={s.eyebrow}>Nothing on the menu here</p><h1>Meal not found</h1><p>This sample meal does not exist. Return to the current offers to choose a meal.</p><Link className={s.button} href="/">Return to meals <Icon name="arrow" /></Link></section>; }
-
-
-
