@@ -1,5 +1,27 @@
 # Verification record
 
+## One-click Windows launcher and README — 22 October 2026
+
+The launcher was exercised from a clean ZIP-style copy of the repository in a path containing spaces, launched from a different working directory. Node.js and npm were removed from that process's PATH. It downloaded Node.js 24 from nodejs.org, verified the archive against the official SHA-256 checksum, installed the locked dependencies, built the app with webpack, started a loopback-only production server and opened the browser.
+
+A second start through the earlier ecobiz-app/run_me.bat compatibility shortcut reused the private runtime, dependencies and production build. Both cache timestamps stayed unchanged, no install/build step ran, and the app returned HTTP 200. Stopping the owned test launcher process tree stopped its server; the existing port-3012 preview was unaffected.
+
+| Check | Result |
+| --- | --- |
+| Windows launcher tests | Passed: script parsing, occupied-port fallback, checksum rejection before extraction, hashing without Get-FileHash, paths with spaces, dependency caching, dependency updates, failed-install recovery, build reuse, source/asset invalidation and failed-build recovery. |
+| Clean first start | Passed on Windows x64 with no system Node.js/npm available to the launcher. Private Node.js 24.22.1 was downloaded and used. |
+| Cached second start | Passed through the compatibility launcher without downloads, dependency installation or a rebuild. |
+| Production browser journeys | Both commerce-browser.mjs and browser.mjs passed against the launcher-served app, including customer/staff flows, storage failure recovery, keyboard controls and responsive widths. |
+| Typecheck and lint | Both passed on the final working tree. |
+| Application unit suite | Passed: existing customer, staff and commerce rules. |
+| README links and ordering | Passed: local links resolve, the introduction and What you can try precede the quick-start instructions, and all three screenshot panels load. |
+| README visual review | Meals, Fertilizer's Our story section and customer Delivery were freshly captured at 390 × 844 and reviewed together in the rendered README. |
+
+The initial development-mode launcher exposed the Next.js development toolbar over the Meals navigation during a storage-recovery browser check. The launcher was changed to an automatically cached production preview, and the same browser suite then passed without changing application behavior or weakening the tests. Source, public assets and application configuration/package files determine when the production build is refreshed.
+
+The first setup needs internet access. Windows x64 was tested; the ARM64 download path is implemented but was not exercised on ARM hardware. These remain local frontend-demo checks, not verification of live authentication, payments, delivery services or backend concurrency.
+
+## Earlier application and publication checks — 18 October 2026
 Verified on **18 October 2026**, using Node.js 24 and the local production build on port 3001.
 
 | Check | Result |
