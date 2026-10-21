@@ -42,3 +42,10 @@ Main checkout retained unchanged; sandbox branch retained for further visual ite
 Restored the original Inter/Manrope app typography and Barlow Condensed commerce headings at the user's request. Retained the shared Meals/Account header, logo sizing/spacing, all other non-typographic layout refinements, and all demo behavior. Removed only the reverted Sigmar/Maname font assets and their licenses.
 
 Verification: production build PASS; original-font/shared-header browser review PASS for seven routes at 320/390/768/1440; commerce interaction suite PASS. Header implementation files unchanged by this revert.
+
+## Meals styling alignment
+
+Fertilizer, Delivery (including the runner view), and My Orders now use the Meals green accent (#9ccb20), hover color and stock-pill surface. Removed the separate condensed-font styling. Shared typography tokens preserve the existing Meals scale and apply Manrope headings/prices and Inter supporting text/actions to the new sections. Phone-sized layouts use the corresponding Meals phone sizes, including narrow-screen adjustments. The shared logo header and demo behavior are retained.
+
+Verification: production build and rule suite PASS; direct browser comparison PASS for button background, font families, and phone heading/product/price/action sizes; commerce journeys PASS; 320/390/768/1440px overflow checks PASS. Mobile and three-phone screenshots visually reviewed.
+Retained production customer/staff browser journeys also PASS after the shared-token change.
