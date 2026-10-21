@@ -43,3 +43,5 @@ Thumbs.db
 !/deliverables/pitch-deck/
 /deliverables/pitch-deck/*
 !/deliverables/pitch-deck/EcoBiz Pitch deck.pdf
+# Private one-click launcher runtime and setup state.
+/.ecobiz/

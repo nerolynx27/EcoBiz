@@ -2,7 +2,9 @@
 
 For the project introduction, selected documents, and license, see the [project README](../README.md). This guide covers the local frontend demonstration and its implementation details.
 
-The [verification record](../docs/VERIFICATION.md) covers the 18 October 2026 production build, customer/staff journeys, and mobile checks with the updated UNITEN logo. Dated implementation notes below describe earlier development stages.
+For a quick test on Windows, extract the whole repository and double-click **[START_ECOBIZ.bat](../START_ECOBIZ.bat)** at its root. It prepares Node.js and dependencies, starts the current app, and opens your browser. No manual installation or build is needed. Keep its window open while testing.
+
+The [project README](../README.md#try-the-app-on-windows) has a short Meals, Fertilizer and Delivery tour. The [verification record](../docs/VERIFICATION.md) distinguishes the latest launcher checks from earlier application checks.
 
 ## Organic leaf styling — 16 October 2026
 
@@ -14,7 +16,7 @@ Historical design evidence and source snapshots are retained locally, outside th
 
 One Next.js / TypeScript / CSS Modules application under `ecobiz-app/`. Part 3 extends the existing dashboard, assets and shared state. No OAuth, database, real payment, vendor agreement or deployment is connected.
 
-## Run and check
+## Developer setup and checks
 
 Node.js 24 and npm. From this directory:
 
@@ -23,11 +25,11 @@ npm ci
 npm run typecheck
 npm run lint
 npm test
-npm run build
+npm run build -- --webpack
 npm run start -- --port 3001
 ```
 
-Open **http://127.0.0.1:3001**. Stop the previous server before starting another on this port. A port is a server address, not another version of the application. Browser storage is separate per port. For development use `npm run dev -- --port 3001` instead of the production server.
+Open **http://127.0.0.1:3001**. Stop the previous server before starting another on this port. A port is a server address, not another version of the application. Browser storage is separate per port. For development with the existing sandbox installation, use `npm run dev -- --webpack --port 3001` instead of the production server.
 
 With the server running:
 
@@ -40,16 +42,16 @@ The browser script uses installed Edge (`BROWSER_CHANNEL=chrome` selects Chrome)
 
 ## Access over the same Wi-Fi / LAN
 
-Double-click `run_me.bat`. It prints the computer's current LAN URL (for example `http://10.228.155.36:3001`); open that URL on a device connected to the same Wi-Fi. The server binds to `0.0.0.0`. Keep the computer and server running. The IP may change after reconnecting.
+The one-click launcher is local-only and does not configure the firewall. For an optional developer-led LAN demonstration, start the server manually with npm run dev -- --webpack --hostname 0.0.0.0 --port 3001. Open the computer's LAN address, such as http://192.168.1.10:3001, from a device on the same Wi-Fi. Keep the computer and server running.
 
-One-time firewall setup: run `setup_lan_firewall.ps1` in an Administrator PowerShell. It allows Node.js TCP port 3001 on Wi-Fi for LocalSubnet addresses, including when Windows labels the Wi-Fi network Public. Browser demo records remain separate on each device and origin. Wi-Fi client isolation may prevent devices from reaching each other.
+If Windows blocks access, the existing setup_lan_firewall.ps1 is a separate administrator-run helper for Node.js TCP port 3001 on LocalSubnet addresses. It is never run by the launcher. Browser records remain separate on each device and origin; Wi-Fi client isolation can prevent access.
 
 ## Full demonstration
 
 1. Open **Demo controls → Reset demo**. Guest, sample offers, seeded history and 1 October 2026 at 9:15 pm MYT are restored.
 2. Choose **Staff demo · Cabin Vendor**. Operations has its own navigation. Choose Create sample offer, select one of four meal templates or + for a blank custom meal, fill its required fields and confirm Publish meal. The single editor stays above the growing shared published list. Vendor/service date come from the displayed demo context; new offers use a 50 sen fee. Prices entered in RM are stored as integer sen.
 3. Switch Demo session to Guest. Browse the new offer → Reserve → Continue with demo account. Save invented profile details, e.g. Sample Student / 0100000000; confirm the reservation.
-4. Refresh and reopen the pass from My reservations. Note its reference. One stock unit was allocated. The pass means reserved/pay at pickup, not paid/collected.
+4. Refresh and reopen the pass through My Orders → Meal reservations. Note its reference. One stock unit was allocated. The pass means reserved/pay at pickup, not paid/collected.
 5. Switch to Staff demo. Find the reference. Check **Meal handed over** AND **Payment received**, then confirm completion. The status event records actor and time; repeating completion cannot count again.
 6. Switch to Muaz/customer mode. The pass and history show Completed; the dashboard has no active booking.
 7. Return to Staff demo for the service date. One 700 + 50 sen completed meal contributes 1 unit, RM7.00 vendor proceeds, RM0.50 fee owed, RM0.00 settled and RM0.50 outstanding.
