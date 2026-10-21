@@ -8,7 +8,7 @@ Goal: reproduce all three approved mobile screens as working frontend demo views
 - Customer delivery: My deliveries / Earn as runner segments, On the way badge, reference cyclist artwork, 10–15 min sample ETA, route, four progress steps, Amir contact row, handover code 4821. Contact opens an explicitly sample-only panel.
 - Runner: availability switch, RM12 / 3 deliveries sample starting totals, RM3 meal and RM4 fertilizer jobs, acceptance, pickup and code-confirmed completion. No concurrent acceptance or duplicate earnings.
 - Customer bottom navigation: Meals, Fertilizer, Delivery, My Orders, Account. Staff navigation remains separate.
-- Visual fidelity: forest #062d20, ivory #faf7eb, lime #c6fb60; condensed bold headings, thin line icons, 14px rounded cards. Short copy, no extra marketing sections. Use the actual reference imagery with CSS image windows; implement all UI text and controls as native HTML.
+- Visual fidelity: forest #062d20, ivory #faf7eb, lime #c6fb60; Sigmar titles and Maname supporting text, shared Meals/Account logo header, thin line icons, 14px rounded cards. Short copy, no extra marketing sections. Use the actual reference imagery with CSS image windows; implement all UI text and controls as native HTML.
 - Routes: /fertilizer, /delivery, /delivery/runner, /orders, /sandbox (three-screen review board).
 - Local frontend state uses its own browser storage key; real payments, GPS, messaging, multi-user delivery, and real stock are outside this visual-demo scope. A small Sample demo label identifies sample values.
 - Responsive: match the reference proportions at 430px, support 320/390/768/1440 without horizontal overflow; visible keyboard focus, labelled toggles, live feedback, native confirmation dialog.

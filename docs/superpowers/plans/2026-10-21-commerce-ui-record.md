@@ -28,3 +28,11 @@ Final verification (21 October 2026):
 Main checkout retained unchanged; sandbox branch retained for further visual iteration. No merge, push or deployment.
 - Final retained production browser rerun after provider fix: PASS for both the full customer journey and full staff journey.
 - Independent code review: the single P2 was fixed and verified RED → GREEN; no other consequential findings.
+
+## Requested header and font revision
+
+- Reused the Meals/Account Header component across fertilizer, delivery, runner, orders and the visual board. Compact fitting keeps the same original logo assets and account behavior inside the phone-sized layouts.
+- Bundled Sigmar and Maname from the official Google Fonts repository, with OFL license files. Sigmar applies to all app headings; Maname applies to supporting text, forms, navigation and amounts. No external font request at runtime.
+- Adjusted heading sizes and small-text sizes for the new font proportions. Header and layout checks cover Meals, Account, fertilizer, delivery, runner, orders and the board at 320/390/768/1440px.
+- Typecheck, lint, unit suite and production build passed. Commerce browser suite and retained customer/staff journeys passed with the new typography. Final header spacing checked in the follow-up production verification.
+- Final production verification: PASS for font loading and shared-header layout across all seven routes at all four widths; PASS for commerce interactions and complete existing customer/staff browser journeys.

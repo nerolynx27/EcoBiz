@@ -21,9 +21,9 @@ export function Icon({ name }: { name: 'meals' | 'calendar' | 'account' | 'clock
   };
   return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name]}</svg>;
 }
-export function Header() {
+export function Header({ compact = false }: { compact?: boolean }) {
   const { signedIn, profile, state } = useDemo();
-  return <header className={s.header}>
+  return <header className={`${s.header} ${compact ? s.compactHeader : ""}`}>
     <Link className={s.brand} href="/" aria-label="EcoBiz home"><img src="/logo.jpeg" width="88" height="64" alt="EcoBiz" /></Link>
     <span className={s.campus}><span className={`${s.brand} ${s.unitenBrand}`}><img src="/logo_uniten.png" width="428" height="165" alt="UNITEN — Universiti Tenaga Nasional" /></span></span>
     <Link className={s.avatar} href={state.staff ? "/ops" : "/account"} aria-label={state.staff ? "Staff demo operations" : "Account"}>{state.staff ? 'S' : signedIn ? profile.displayName.charAt(0) : <Icon name="account" />}</Link>

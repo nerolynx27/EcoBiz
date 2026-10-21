@@ -14,12 +14,9 @@ const links = [ ['/', 'Meals', 'meals'], ['/fertilizer', 'Fertilizer', 'leaf'], 
 export function CommerceNavigation({ active, wide = false }: { active: string; wide?: boolean }) {
   return <nav className={`${s.nav} ${wide ? s.wideNav : ''}`} aria-label="Main navigation">{links.map(([href, label, icon]) => <Link key={href} href={href} aria-current={active === href ? 'page' : undefined}><Icon name={icon}/><span>{label}</span></Link>)}</nav>;
 }
-export function CommerceHeader() {
-  return <header className={s.header}><Link href="/" className={s.wordmark} aria-label="EcoBiz home">EcoBiz<span aria-hidden="true">⌁</span></Link><span className={s.campus}>UNITEN</span><Link className={s.account} href="/account" aria-label="Account"><Icon name="account"/></Link></header>;
-}
 export function CommerceFrame({ children, active, board = false }: { children: ReactNode; active: string; board?: boolean }) {
   const { notice } = useCommerce();
-  return <div className={`${s.screen} ${board ? s.boardScreen : ''}`}><div className={s.leaves} aria-hidden="true"/><CommerceHeader/><div className={s.content}>{children}</div>{notice && <p className={s.notice} role="status">{notice}</p>}<div className={s.sample}>Sample demo</div><CommerceNavigation active={active}/></div>;
+  return <div className={`${s.screen} ${board ? s.boardScreen : ''}`}><div className={s.leaves} aria-hidden="true"/><div className={s.sharedHeader}><Header compact/></div><div className={s.content}>{children}</div>{notice && <p className={s.notice} role="status">{notice}</p>}<div className={s.sample}>Sample demo</div><CommerceNavigation active={active}/></div>;
 }
 export function AppShell({ children }: { children: ReactNode }) {
   const path = usePathname();
